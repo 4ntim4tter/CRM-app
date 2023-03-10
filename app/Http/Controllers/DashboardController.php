@@ -10,11 +10,10 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $chart_stats = [
-            'chart_title' => 'Users by months',
-            'report_type' => 'group_by_date',
+            'chart_title' => 'Users by name',
+            'report_type' => 'group_by_string',
             'model' => 'App\Models\User',
-            'group_by_field' => 'created_at',
-            'group_by_period' => 'month',
+            'group_by_field' => 'name',
             'chart_type' => 'bar',
         ];
         $chart = new LaravelChart($chart_stats);
