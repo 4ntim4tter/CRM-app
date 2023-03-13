@@ -24,8 +24,11 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Tasks</span>
                 </a>
             </li>
+            <li>
+                <div class="flex" style="position:absolute; bottom:20px; width:15%">
+                    <x-user-dropdown/>
+                </div>
+            </li>
         </ul>
     </div>
-    <div class="flex" style="position:absolute; bottom:20px; width:15%">
-        <x-user-dropdown/>
-    </div>
+    
