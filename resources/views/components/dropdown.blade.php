@@ -36,8 +36,8 @@ switch ($width) {
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="fixed z-20 w-100 rounded-md shadow-lg align-middle"
-            style="display: none; bottom: 7%; width: 5%; align-items: center;"
+            class="fixed z-50 w-100 rounded-md shadow-lg align-middle"
+            style="display: none;"
             @click="open = false">
         <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
             {{ $content }}

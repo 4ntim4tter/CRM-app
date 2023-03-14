@@ -1,9 +1,7 @@
 <x-app-layout>
-        <x-slot name="header">
-            <p class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Dashboard') }}
-            </p>
-        </x-slot>
+    <x-slot name="header">
+        <x-header header='Dashboard'/>
+    </x-slot>
     <div class="py-5 inline-flex" style="min-width: 100%">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="min-width:45%">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-2">
