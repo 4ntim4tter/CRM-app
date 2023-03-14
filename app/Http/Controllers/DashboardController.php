@@ -24,5 +24,20 @@ class DashboardController extends Controller
         return view('dashboard', compact('chart', 'clients'));
     }
 
+    public function clients(Request $request, Client $clients)
+    {
+        $clients = Client::all();
+        return view('clients', compact('clients'));
+    }
+
+    public function projects(Request $request)
+    {
+        return view('projects');
+    }
+
+    public function tasks(Request $request)
+    {
+        return view('tasks');
+    }
 
 }
