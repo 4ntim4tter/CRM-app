@@ -1,4 +1,4 @@
-    <div class="min-h-screen px-3 py-4 bg-gray-50 dark:bg-gray-800">
+    <div class="px-3 py-4 bg-gray-50 dark:bg-gray-800" style="height: 100%; overflow:auto;">
         <ul class="space-y-4" style="padding-left: 20%">
             <li>
                 <a href="{{ route('dashboard') }}"

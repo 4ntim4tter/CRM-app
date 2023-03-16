@@ -16,7 +16,7 @@
     </head>
 
     <body class="font-sans antialiased inline-flex" style="width: 100%">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900" style="width:20%;">
+        <div class="bg-gray-100 dark:bg-gray-900" style="width:20%;">
             <x-sidebar/>
         </div>
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900" style="width: 100%;">

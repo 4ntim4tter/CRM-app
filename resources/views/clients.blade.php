@@ -2,7 +2,7 @@
     <x-slot name="header">
         <x-header header='Clients' />
     </x-slot>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="p-1 relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead >
                     <tr>
@@ -15,7 +15,7 @@
                 <tbody>
                     @foreach ($clients as $client)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th class="scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"">{{ $client->id }}</th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->id }}</th>
                             <td class="px-6 py-4">{{ $client->name }}</td>
                             <td class="px-6 py-4">{{ $client->created_at }}</td>
                             <td class="px-6 py-4">{{ $client->updated_at }}</td>
@@ -23,5 +23,8 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="p-1">
+            {{ $clients->links() }}
         </div>
 </x-app-layout>

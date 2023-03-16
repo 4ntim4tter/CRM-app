@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     public function clients(Request $request, Client $clients)
     {
-        $clients = Client::all();
+        $clients = Client::first()->paginate(10);
         return view('clients', compact('clients'));
     }
 
