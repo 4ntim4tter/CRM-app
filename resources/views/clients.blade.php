@@ -15,10 +15,15 @@
                 <tbody>
                     @foreach ($clients as $client)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->id }}</th>
-                            <td class="px-6 py-4">{{ $client->name }}</td>
-                            <td class="px-6 py-4">{{ $client->created_at }}</td>
-                            <td class="px-6 py-4">{{ $client->updated_at }}</td>
+                            <form action="">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->id }}</th>
+                                <td class="px-6 py-4">{{ $client->name }}</td>
+                                <td class="px-6 py-4">{{ $client->created_at }}</td>
+                                <td class="px-6 py-4">{{ $client->updated_at }}</td>
+                                <td class="px-6 py-4">
+                                    <x-danger-button>{{ __('Delete') }}</x-danger-button>
+                                </td>
+                            </form>
                         </tr>
                     @endforeach
                 </tbody>
