@@ -2,6 +2,13 @@
     <x-slot name="header">
         <x-header header='Clients' />
     </x-slot>
+        <div>
+            @if (session('status'))
+                <div class="alert alert-danger flex-grow-1" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
         <div class="p-1 relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead >
@@ -15,13 +22,15 @@
                 <tbody>
                     @foreach ($clients as $client)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <form action="">
+                            <form action="{{ route('clients.delete', ['client' => $client]) }}" method='post'>
+                                @csrf
+                                @method('delete')
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->id }}</th>
-                                <td class="px-6 py-4">{{ $client->name }}</td>
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->name }}</td>
                                 <td class="px-6 py-4">{{ $client->created_at }}</td>
                                 <td class="px-6 py-4">{{ $client->updated_at }}</td>
                                 <td class="px-6 py-4">
-                                    <x-danger-button>{{ __('Delete') }}</x-danger-button>
+                                    <x-danger-button onclick="return confirm ('Are you sure?')">{{ __('Delete') }}</x-danger-button>
                                 </td>
                             </form>
                         </tr>

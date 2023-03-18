@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('projects');
     Route::get('/tasks', [DashboardController::class, 'tasks']
     )->name('tasks');
+
+    Route::delete('/clients/delete', [ClientController::class, 'delete']
+    )->name('clients.delete');
 });
 
 
