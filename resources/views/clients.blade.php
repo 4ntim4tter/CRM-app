@@ -2,19 +2,20 @@
     <x-slot name="header">
         <x-header header='Clients' />
     </x-slot>
-        <div>
-            @if (session('status'))
-                <div class="alert alert-danger flex-grow-1" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-        </div>
+    <div class="p-1">
+        @if (session('status'))
+            <div class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-red-900 dark:bg-red-300 dark:border-gray-500" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
         <div class="p-1 relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead >
                     <tr>
                         <th scope="col" class="px-6 py-3">ID</th>
                         <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
                         <th scope="col" class="px-6 py-3">Created at:</th>
                         <th scope="col" class="px-6 py-3">Updated at:</th>
                     </tr>
@@ -27,11 +28,10 @@
                                 @method('delete')
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->id }}</th>
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->name }}</td>
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $client->email }}</td>
                                 <td class="px-6 py-4">{{ $client->created_at }}</td>
                                 <td class="px-6 py-4">{{ $client->updated_at }}</td>
-                                <td class="px-6 py-4">
-                                    <x-danger-button onclick="return confirm ('Are you sure?')">{{ __('Delete') }}</x-danger-button>
-                                </td>
+                                <td class="px-6 py-4"><x-danger-button onclick="return confirm ('Are you sure?')">{{ __('Delete') }}</x-danger-button></td>
                             </form>
                         </tr>
                     @endforeach
