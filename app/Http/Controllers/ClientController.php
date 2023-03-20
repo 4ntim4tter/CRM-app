@@ -12,4 +12,9 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('clients')->with('status', 'Client Deleted.');
     }
+
+    public function edit(Client $client)
+    {
+        return view('profile.edit', compact('client'));
+    }
 }

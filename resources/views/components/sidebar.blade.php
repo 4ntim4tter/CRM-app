@@ -16,11 +16,11 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
                 @if (Route::is('clients'))
-                    <div class="px-7 flex-1 ml-2 whitespace-nowrap" style="font-size: 16px">
-                        <table style="border-left: 1px solid white">
+                    <div class="px-7 flex-1 ml-2 whitespace-nowrap">
+                        <table style="">
                             <tr>
-                                <td class="hover:border-b hover:border-white hover:border-solid">
-                                    <a href="" class="flex items-center text-base font-normal dark:text-white">
+                                <td class="hover:border-b hover:border-l hover:border-gray-500 hover:border-solid">
+                                    <a href="" class="flex items-center text-base font-normal dark:text-white" style="font-size: 12px">
                                         &nbsp&nbsp Add Client &nbsp&nbsp
                                     </a>
                                 </td>

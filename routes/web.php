@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClientController;
+use App\Models\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/tasks', [DashboardController::class, 'tasks']
     )->name('tasks');
 
-    Route::delete('/clients/delete/{client}', [ClientController::class, 'delete']
-    )->name('clients.delete');
+    Route::get('/client/edit/{client}', [ClientController::class, 'edit']
+    )->name('client.edit');
+    Route::delete('/client/delete/{client}', [ClientController::class, 'delete']
+    )->name('client.delete');
 });
 
 
