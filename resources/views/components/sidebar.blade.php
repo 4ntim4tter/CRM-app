@@ -21,21 +21,7 @@
                             <tr>
                                 <td class="hover:border-b hover:border-white hover:border-solid">
                                     <a href="" class="flex items-center text-base font-normal dark:text-white">
-                                        &nbsp&nbspfds
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="hover:border-b hover:border-white hover:border-solid">
-                                    <a href="" class="flex items-center text-base font-normal dark:text-white">
-                                        &nbsp&nbspfds
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="hover:border-b hover:border-white hover:border-solid">
-                                    <a href="" class="flex items-center text-base font-normal dark:text-white">
-                                        &nbsp&nbspfds
+                                        &nbsp&nbsp Add Client &nbsp&nbsp
                                     </a>
                                 </td>
                             </tr>

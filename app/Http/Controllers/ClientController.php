@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function delete(Request $request, Client $client)
+    public function delete(Client $client)
     {
-        $client->where('id', $request->client)->delete();
+        $client->delete();
         return redirect()->route('clients')->with('status', 'Client Deleted.');
     }
 }

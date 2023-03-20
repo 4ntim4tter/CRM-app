@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/tasks', [DashboardController::class, 'tasks']
     )->name('tasks');
 
-    Route::delete('/clients/delete', [ClientController::class, 'delete']
+    Route::delete('/clients/delete/{client}', [ClientController::class, 'delete']
     )->name('clients.delete');
 });
 
