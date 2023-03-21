@@ -13,6 +13,16 @@ class ClientController extends Controller
         return redirect()->route('clients')->with('status', 'Client Deleted.');
     }
 
+    public function store(Request $request, Client $client)
+    {
+        $client->updateOrCreate(['id' => $request->id], [
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+        return redirect()->route('clients')->with('status', 'Client stored.');
+    }
+
     public function edit(Client $client)
     {
         return view('profile.edit', compact('client'));
