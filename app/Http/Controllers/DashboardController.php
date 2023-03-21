@@ -12,11 +12,11 @@ class DashboardController extends Controller
     {
         $clients = Client::all();
         $chart_stats = [
-            'chart_title' => 'Users by name',
+            'chart_title' => 'Users by date',
             'report_type' => 'group_by_string',
-            'model' => 'App\Models\User',
-            'group_by_field' => 'name',
-            'chart_type' => 'line',
+            'model' => 'App\Models\Client',
+            'group_by_field' => 'created_at',
+            'chart_type' => 'bar',
             'chart_color' => '255,255,255'
         ];
         $chart = new LaravelChart($chart_stats);
@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     public function clients(Request $request, Client $clients)
     {
-        $clients = Client::first()->paginate(10);
+        $clients = Client::latest()->paginate(10);
         return view('clients', compact('clients'));
     }
 

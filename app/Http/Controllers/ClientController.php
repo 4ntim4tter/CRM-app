@@ -23,6 +23,11 @@ class ClientController extends Controller
         return redirect()->route('clients')->with('status', 'Client stored.');
     }
 
+    public function create()
+    {
+        return view('profile.edit');
+    }
+
     public function edit(Client $client)
     {
         return view('profile.edit', compact('client'));

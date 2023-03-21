@@ -32,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::get('/client/edit/{client}', [ClientController::class, 'edit']
     )->name('client.edit');
+    Route::get('/client/create', [ClientController::class, 'create']
+    )->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store']
     )->name('client.store');
     Route::delete('/client/delete/{client}', [ClientController::class, 'delete']
