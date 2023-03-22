@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Logging;
 use Illuminate\Http\Request;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -11,6 +12,7 @@ class DashboardController extends Controller
     public function index(Request $request, Client $clients)
     {
         $clients = Client::all();
+        $logs = Logging::all();
         $chart_stats = [
             'chart_title' => 'Users by date',
             'report_type' => 'group_by_string',
@@ -21,7 +23,7 @@ class DashboardController extends Controller
         ];
         $chart = new LaravelChart($chart_stats);
 
-        return view('dashboard', compact('chart', 'clients'));
+        return view('dashboard', compact('chart', 'clients', 'logs'));
     }
 
     public function clients(Request $request, Client $clients)

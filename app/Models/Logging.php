@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Logging extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user',
+        'message',
+    ];
 }
