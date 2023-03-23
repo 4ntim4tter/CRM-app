@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function index(Request $request, Client $clients)
     {
         $clients = Client::all();
-        $logs = Logging::all();
+        $logs = Logging::latest()->get();
         $chart_stats = [
             'chart_title' => 'Users by date',
             'report_type' => 'group_by_string',

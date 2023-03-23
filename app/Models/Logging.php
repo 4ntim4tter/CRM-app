@@ -10,7 +10,7 @@ class Logging extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user',
-        'message',
+        'name',
+        'log',
     ];
 }
