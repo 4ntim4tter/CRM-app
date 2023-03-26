@@ -10,7 +10,7 @@
             </div>
         @endif
     </div>
-    <x-table :clients="$clients"/>
+    <x-client-table :clients="$clients"/>
     <div class="p-1">
         {{ $clients->links() }}
     </div>
