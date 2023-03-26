@@ -43,7 +43,7 @@
                         <table style="">
                             <tr>
                                 <td class="hover:border-b hover:border-l hover:border-gray-500 hover:border-solid">
-                                    <a href="{{ route('client.create') }}"
+                                    <a href="{{ route('project.create') }}"
                                         class="flex items-center text-base font-normal dark:text-white"
                                         style="font-size: 12px">
                                         &nbsp Add Project

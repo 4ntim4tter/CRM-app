@@ -38,11 +38,11 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('profile.edit');
+        return view('client-edit');
     }
 
     public function edit(Client $client)
     {
-        return view('profile.edit', compact('client'));
+        return view('client-edit', compact('client'));
     }
 }

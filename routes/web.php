@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProjectController;
 use App\Models\Client;
 
 /*
@@ -30,14 +31,23 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/tasks', [DashboardController::class, 'tasks']
     )->name('tasks');
 
-    Route::get('/client/edit/{client}', [ClientController::class, 'edit']
+    Route::get('/client/{client}/edit', [ClientController::class, 'edit']
     )->name('client.edit');
     Route::get('/client/create', [ClientController::class, 'create']
     )->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store']
     )->name('client.store');
-    Route::delete('/client/delete/{client}', [ClientController::class, 'delete']
+    Route::delete('/client/{client}/delete', [ClientController::class, 'delete']
     )->name('client.delete');
+
+    Route::delete('project/{project}/delete', [ProjectController::class, 'delete']
+    )->name('project.delete');
+    Route::get('project/{project}/edit', [ProjectController::class, 'edit']
+    )->name('project.edit');
+    Route::get('/project/create', [ProjectController::class, 'create']
+    )->name('project.create');
+    Route::post('/project/store', [ProjectController::class, 'store']
+    )->name('project.store');
 });
 
 
