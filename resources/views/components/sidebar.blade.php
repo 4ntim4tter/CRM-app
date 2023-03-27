@@ -16,7 +16,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
                 @if (Route::is('clients'))
-                    <div class="px-7 flex-1 ml-2">
+                    <div class="px-2 flex-1 ml-2">
                         <table style="">
                             <tr>
                                 <td class="hover:border-b hover:border-l hover:border-gray-500 hover:border-solid">
@@ -39,7 +39,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Projects</span>
                 </a>
                 @if (Route::is('projects'))
-                    <div class="px-7 flex-1 ml-2">
+                    <div class="px-2 flex-1 ml-2">
                         <table style="">
                             <tr>
                                 <td class="hover:border-b hover:border-l hover:border-gray-500 hover:border-solid">

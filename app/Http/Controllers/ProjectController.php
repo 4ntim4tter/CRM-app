@@ -17,4 +17,10 @@ class ProjectController extends Controller
     {
         return view('project-edit', compact('project'));
     }
+
+    public function create()
+    {
+        return view('project-edit');
+    }
+
 }
