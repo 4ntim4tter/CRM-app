@@ -11,11 +11,11 @@
             <li>
                 <a href="{{ route('clients') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700
-                    @if (Route::is('clients')) dark:bg-gray-700 @endif
+                    @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit')) dark:bg-gray-700 @endif
                     ">
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
-                @if (Route::is('clients'))
+                @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit'))
                     <div class="px-2 flex-1 ml-2">
                         <table style="">
                             <tr>
@@ -34,11 +34,11 @@
             <li>
                 <a href="{{ route('projects') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700
-                    @if (Route::is('projects')) dark:bg-gray-700 @endif
+                    @if (Route::is('projects') || Route::is('project.create') || Route::is('project.edit')) dark:bg-gray-700 @endif
                     ">
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Projects</span>
                 </a>
-                @if (Route::is('projects'))
+                @if (Route::is('projects') || Route::is('project.create') || Route::is('project.edit'))
                     <div class="px-2 flex-1 ml-2">
                         <table style="">
                             <tr>
