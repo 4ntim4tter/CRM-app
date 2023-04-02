@@ -29,4 +29,9 @@ class ProjectController extends Controller
         return view('project-edit', compact('client_names', 'user_names'));
     }
 
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
+
 }
