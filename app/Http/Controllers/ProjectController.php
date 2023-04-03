@@ -29,9 +29,22 @@ class ProjectController extends Controller
         return view('project-edit', compact('client_names', 'user_names'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Project $project, Client $client)
     {
-        dd($request->all());
-    }
+        $client = $client->where('name', '=', $request->client)->get();
+        $project->updateOrCreate(
+            ['id' => $request->id],
+            [
+                'name' => $request->name,
+                'client_name' => $request->client,
+                'description' => $request->description,
+                'user_name' => $request->user,
+                'status' => 1,
+                'client_id' => $client[0]->id,
+                'deadline' => date('Y-m-d', strtotime('+14 days'))
+            ]
+        );
 
+        return redirect()->route('projects')->with('status', 'Project stored.');
+    }
 }
