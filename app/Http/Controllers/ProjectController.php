@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Logging;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,8 +30,17 @@ class ProjectController extends Controller
         return view('project-edit', compact('client_names', 'user_names'));
     }
 
-    public function store(Request $request, Project $project, Client $client)
+    public function store(Request $request, Project $project, Client $client, Logging $log)
     {
+        if ($project->where('id', '=', $request->id)->exists()){
+            $log->create([
+                'name' => auth()->user()->name,
+                'log' => 'Project ' . $request->name . ' updated.']);
+        } else {
+            $log->create([
+                'name' => auth()->user()->name,
+                'log' => 'Project ' . $request->name . ' created.']);
+        }
         $client = $client->where('name', '=', $request->client)->get();
         $project->updateOrCreate(
             ['id' => $request->id],
