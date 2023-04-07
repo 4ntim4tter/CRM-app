@@ -13,4 +13,5 @@ class Logging extends Model
         'name',
         'log',
     ];
+
 }
