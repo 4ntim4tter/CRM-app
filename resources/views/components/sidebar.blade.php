@@ -40,13 +40,22 @@
                 </a>
                 @if (Route::is('projects') || Route::is('project.create') || Route::is('project.edit'))
                     <div class="px-2 flex-1 ml-2">
-                        <table style="">
+                        <table>
                             <tr>
-                                <td class="hover:border-b hover:border-l hover:border-gray-500 hover:border-solid">
+                                <td class="hover:border hover:border-gray-500 hover:border-solid px-2">
                                     <a href="{{ route('project.create') }}"
                                         class="flex items-center text-base font-normal dark:text-white"
                                         style="font-size: 12px">
-                                        &nbsp Add Project
+                                        Add Project
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="hover:border hover:border-gray-500 hover:border-solid px-2">
+                                    <a href="{{ route('project.create') }}"
+                                        class="flex items-center text-base font-normal dark:text-white"
+                                        style="font-size: 12px">
+                                        View Deleted                
                                     </a>
                                 </td>
                             </tr>
