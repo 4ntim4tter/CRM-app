@@ -30,6 +30,13 @@ class ProjectController extends Controller
         return view('project-edit', compact('client_names', 'user_names'));
     }
 
+    public function trashed(Project $project)
+    {
+        $projects = $project->onlyTrashed()->latest()->paginate(10);
+        // dd($projects);
+        return view('projects', compact('projects'));
+    }
+
     public function store(Request $request, Project $project, Client $client, Logging $log)
     {
         if ($project->where('id', '=', $request->id)->exists()){

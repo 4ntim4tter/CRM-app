@@ -46,6 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('project.edit');
     Route::get('/project/create', [ProjectController::class, 'create']
     )->name('project.create');
+    Route::get('/project/trashed', [ProjectController::class, 'trashed']
+    )->name('project.trashed');
     Route::post('/project/store', [ProjectController::class, 'store']
     )->name('project.store');
 });
