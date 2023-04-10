@@ -6,7 +6,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
-use App\Models\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +47,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('project.create');
     Route::get('/project/trashed', [ProjectController::class, 'trashed']
     )->name('project.trashed');
+    Route::get('/project/restore/{project}', [ProjectController::class, 'restore']
+    )->name('project.restore');
     Route::post('/project/store', [ProjectController::class, 'store']
     )->name('project.store');
 });

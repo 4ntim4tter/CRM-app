@@ -16,6 +16,12 @@ class ProjectController extends Controller
         return redirect()->route('projects')->with('status', 'Project Deleted.');
     }
 
+    public function restore($id)
+    {
+        Project::onlyTrashed()->where('id', $id)->restore();
+        return redirect()->route('project.trashed')->with('status', 'Projcet Restored.');
+    }
+
     public function edit(Project $project)
     {
         $client_names = Client::pluck('name')->all();
