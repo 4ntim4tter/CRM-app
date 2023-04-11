@@ -10,19 +10,26 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function delete(Project $project)
+    public function delete(Project $project, Logging $log)
     {
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Project ' . $project->name . ' moved to trash.']);
         $project->delete();
         return redirect()->route('projects')->with('status', 'Project Deleted.');
     }
 
-    public function restore($id)
+    public function restore($id, Logging $log)
     {
-        Project::onlyTrashed()->where('id', $id)->restore();
+        $project = Project::onlyTrashed()->where('id', $id)->first();
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Project ' . $project->name . ' restored.']);
+        $project->restore();
         return redirect()->route('project.trashed')->with('status', 'Projcet Restored.');
     }
 
-    public function edit(Project $project)
+    public function edit(Project $project, Logging $log)
     {
         $client_names = Client::pluck('name')->all();
         $user_names = User::pluck('name')->all();
@@ -39,7 +46,6 @@ class ProjectController extends Controller
     public function trashed(Project $project)
     {
         $projects = $project->onlyTrashed()->latest()->paginate(10);
-        // dd($projects);
         return view('projects', compact('projects'));
     }
 
