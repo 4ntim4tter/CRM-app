@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-header header='Projects' />
+        @if (Route::is('project.trashed'))
+            <x-header header='Projects - Trashed' />
+        @else
+            <x-header header='Projects'/>
+        @endif
     </x-slot>
     <div class="p-1">
         @if (session('status'))

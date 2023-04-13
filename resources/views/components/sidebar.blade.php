@@ -21,7 +21,8 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('client.create') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2"
+                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
+                                        @if(Route::is('client.create')) dark:bg-gray-700 @endif"
                                         style="font-size: 12px">
                                         Add Client
                                     </a>
@@ -44,7 +45,8 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('project.create') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2"
+                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
+                                        @if(Route::is('project.create')) dark:bg-gray-700 @endif"
                                         style="font-size: 12px">
                                         Add Project
                                     </a>
@@ -53,7 +55,8 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('project.trashed') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2"
+                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
+                                        @if(Route::is('project.trashed')) dark:bg-gray-700 @endif"
                                         style="font-size: 12px">
                                         View Deleted
                                     </a>
