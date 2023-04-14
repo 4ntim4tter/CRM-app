@@ -41,13 +41,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::delete('project/{project}/delete', [ProjectController::class, 'delete']
     )->name('project.delete');
+    Route::delete('project/{project}/trashed', [ProjectController::class, 'destroy']
+    )->name('project.destroy');
     Route::get('project/{project}/edit', [ProjectController::class, 'edit']
     )->name('project.edit');
     Route::get('/project/create', [ProjectController::class, 'create']
     )->name('project.create');
     Route::get('/project/trashed', [ProjectController::class, 'trashed']
     )->name('project.trashed');
-    Route::get('/project/restore/{project}', [ProjectController::class, 'restore']
+    Route::get('/project/{project}/restore', [ProjectController::class, 'restore']
     )->name('project.restore');
     Route::post('/project/store', [ProjectController::class, 'store']
     )->name('project.store');

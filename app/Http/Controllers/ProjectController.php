@@ -19,6 +19,17 @@ class ProjectController extends Controller
         return redirect()->route('projects')->with('status', 'Project Deleted.');
     }
 
+    public function destroy($id, Logging $log)
+    {
+        $project = Project::onlyTrashed()->where('id', $id)->first();
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Project ' . $project->name . ' deleted permanently.'
+        ]);
+        $project->forceDelete();
+        return redirect()->route('project.trashed')->with('status', 'Project deleted permanently.');
+    }
+
     public function restore($id, Logging $log)
     {
         $project = Project::onlyTrashed()->where('id', $id)->first();
