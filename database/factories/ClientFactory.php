@@ -20,6 +20,7 @@ class ClientFactory extends Factory
             'name' => fake()->company(),
             'email' => fake()->email(),
             'projects' => fake()->word(),
+            'day_created' => strtotime(-random_int(1, 3), strtotime(date('d-m-Y')))
         ];
     }
 }

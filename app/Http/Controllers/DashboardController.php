@@ -18,7 +18,7 @@ class DashboardController extends Controller
             'chart_title' => 'Users by date',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Client',
-            'group_by_field' => 'created_at',
+            'group_by_field' => 'day_created',
             'chart_type' => 'bar',
             'chart_color' => '255,255,255'
         ];
