@@ -16,11 +16,14 @@ class ClientFactory extends Factory
      */
     public function definition(): array
     {
+        $rand_unix = date('d-m-Y');
+        $days_past = random_int(2, 5);
+
         return [
             'name' => fake()->company(),
             'email' => fake()->email(),
             'projects' => fake()->word(),
-            'day_created' => strtotime(-random_int(1, 3), strtotime(date('d-m-Y')))
+            'day_created' => date('d-m-Y', strtotime("-" . $days_past . " days" , strtotime($rand_unix)))
         ];
     }
 }
