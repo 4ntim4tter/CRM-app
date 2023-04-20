@@ -1,7 +1,7 @@
 @aware(['projects'])
     <div class="p-1 relative overflow-x-auto shadow-md sm:rounded-lg pt-2">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="border-t-2 dark:border-gray-800">
+            <thead>
                 <tr>
                     <th scope="col" class="px-6 py-3">ID</th>
                     <th scope="col" class="px-6 py-3">Name</th>
