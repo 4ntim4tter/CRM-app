@@ -1,5 +1,5 @@
     <div class="p-5 bg-gray-50 dark:bg-gray-800" style="height: 100%;">
-        <ul class="space-y-3">
+        <ul class="hidden-border space-y-3">
             <li>
                 <a href="{{ route('dashboard') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700
@@ -16,19 +16,13 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
                 @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit'))
-                    <div class="px-2 flex-1 ml-2">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="{{ route('client.create') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
-                                        @if(Route::is('client.create')) dark:bg-gray-700 @endif"
-                                        style="font-size: 12px">
-                                        Add Client
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="hidden-border px-2 flex-1 ml-2">
+                        <a href="{{ route('client.create') }}"
+                            class="rounded-md flex items-center text-base font-normal dark:text-white px-2
+                                        @if (Route::is('client.create')) dark:bg-gray-700 @endif"
+                            style="font-size: 12px">
+                            Add Client
+                        </a>
                     </div>
                 @endif
             </li>
@@ -40,29 +34,21 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Projects</span>
                 </a>
                 @if (Route::is('projects') || Route::is('project.create') || Route::is('project.edit') || Route::is('project.trashed'))
-                    <div class="px-2 flex-1 ml-2">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="{{ route('project.create') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
-                                        @if(Route::is('project.create')) dark:bg-gray-700 @endif"
-                                        style="font-size: 12px">
-                                        Add Project
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="{{ route('project.trashed') }}"
-                                        class="rounded-md flex items-center text-base font-normal dark:text-white hover:border hover:border-gray-500 hover:border-solid px-2
-                                        @if(Route::is('project.trashed')) dark:bg-gray-700 @endif"
-                                        style="font-size: 12px">
-                                        View Deleted
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="px-2 flex-1 ml-3">
+                        <a href="{{ route('project.create') }}"
+                            class="rounded-md flex items-center text-base font-normal dark:text-white px-4
+                                        @if (Route::is('project.create')) dark:bg-gray-700 @endif"
+                            style="font-size: 12px; white-space: nowrap;">
+                            Add Project
+                        </a>
+                        @can('view', App\Models\Project::class)
+                        <a href="{{ route('project.trashed') }}"
+                            class="rounded-md flex items-center text-base font-normal dark:text-white px-4
+                                        @if (Route::is('project.trashed')) dark:bg-gray-700 @endif"
+                            style="font-size: 12px; white-space: nowrap;">
+                            View Deleted
+                        </a>
+                        @endcan
                     </div>
                 @endif
             </li>
