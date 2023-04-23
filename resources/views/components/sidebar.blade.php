@@ -16,7 +16,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
                 @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit'))
-                    <div class="hidden-border px-2 flex-1 ml-2">
+                    <div class="px-2 flex-1 ml-2">
                         <a href="{{ route('client.create') }}"
                             class="rounded-md flex items-center text-base font-normal dark:text-white px-2
                                         @if (Route::is('client.create')) dark:bg-gray-700 @endif"
@@ -34,20 +34,20 @@
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Projects</span>
                 </a>
                 @if (Route::is('projects') || Route::is('project.create') || Route::is('project.edit') || Route::is('project.trashed'))
-                    <div class="px-2 flex-1 ml-3">
+                    <div class="px-2 flex-1 ml-2">
                         <a href="{{ route('project.create') }}"
-                            class="rounded-md flex items-center text-base font-normal dark:text-white px-4
+                            class="rounded-md flex items-center text-base font-normal dark:text-white px-2
                                         @if (Route::is('project.create')) dark:bg-gray-700 @endif"
                             style="font-size: 12px; white-space: nowrap;">
                             Add Project
                         </a>
                         @can('view', App\Models\Project::class)
-                        <a href="{{ route('project.trashed') }}"
-                            class="rounded-md flex items-center text-base font-normal dark:text-white px-4
+                            <a href="{{ route('project.trashed') }}"
+                                class="rounded-md flex items-center text-base font-normal dark:text-white px-2
                                         @if (Route::is('project.trashed')) dark:bg-gray-700 @endif"
-                            style="font-size: 12px; white-space: nowrap;">
-                            View Deleted
-                        </a>
+                                style="font-size: 12px; white-space: nowrap;">
+                                View Deleted
+                            </a>
                         @endcan
                     </div>
                 @endif
