@@ -15,7 +15,7 @@
                     ">
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Clients</span>
                 </a>
-                @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit'))
+                @if (Route::is('clients') || Route::is('client.create') || Route::is('client.edit') || Route::is('client.trashed'))
                     <div class="px-2 flex-1 ml-2">
                         <a href="{{ route('client.create') }}"
                             class="rounded-md flex items-center text-base font-normal dark:text-white px-2
@@ -23,6 +23,14 @@
                             style="font-size: 12px">
                             Add Client
                         </a>
+                        @can('view', App\Models\Client::class)
+                            <a href="{{ route('client.trashed') }}"
+                                class="rounded-md flex items-center text-base font-normal dark:text-white px-2
+                                        @if (Route::is('client.trashed')) dark:bg-gray-700 @endif"
+                                style="font-size: 12px">
+                                View Deleted
+                            </a>
+                        @endcan
                     </div>
                 @endif
             </li>

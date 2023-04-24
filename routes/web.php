@@ -38,6 +38,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('client.store');
     Route::delete('/client/{client}/delete', [ClientController::class, 'delete']
     )->name('client.delete');
+    Route::delete('/client/{client}/destroy', [ClientController::class, 'destroy']
+    )->name('client.destroy');
+    Route::get('/client/trashed', [ClientController::class, 'trashed']
+    )->name('client.trashed');
 
     Route::delete('project/{project}/delete', [ProjectController::class, 'delete']
     )->name('project.delete');
