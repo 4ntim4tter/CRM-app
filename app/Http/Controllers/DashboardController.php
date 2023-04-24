@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Logging;
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -39,9 +40,10 @@ class DashboardController extends Controller
         return view('projects', compact('projects'));
     }
 
-    public function tasks(Request $request)
+    public function tasks(Request $request, Task $tasks)
     {
-        return view('tasks');
+        $tasks = $tasks->latest()->paginate(10);
+        return view('tasks', compact('tasks'));
     }
 
 }
