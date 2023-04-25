@@ -11,6 +11,7 @@
         @endif
     </div>
     <x-task-table :tasks=$tasks/>
-    <div class="px-4 text-gray-800 dark:text-gray-200 leading-tight" style="max-height: 250px">
+    <div class="p-1">
+        {{ $tasks->links() }}
     </div>
 </x-app-layout>
