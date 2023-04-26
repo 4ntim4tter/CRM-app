@@ -10,8 +10,9 @@
             </div>
         @endif
     </div>
-    <x-task-table :tasks=$tasks/>
+    <x-task-table :tasks=$tasks />
     <div class="p-1">
         {{ $tasks->links() }}
+    </div>
     </div>
 </x-app-layout>

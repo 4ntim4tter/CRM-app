@@ -16,10 +16,10 @@
     </head>
 
     <body class="font-sans antialiased inline-flex" style="width: 100%">
-        <div class="bg-gray-100 dark:bg-gray-900 content-center" style="width: 200px;">
+        <div class="bg-gray-100 dark:bg-gray-900 content-center min-h-screen" style="width: 200px;">
             <x-sidebar/>
         </div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900" style="width: 100%;">
+        <div class="w-full bg-gray-100 dark:bg-gray-900">
             {{-- @include('layouts.navigation') --}}
             <!-- Page Heading -->
             @if (isset($header))
