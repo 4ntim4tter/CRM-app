@@ -19,14 +19,14 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        $project = Project::inRandomOrder()->select('client_name','user_name','id')->get();
+        $project = Project::inRandomOrder()->select('client_name','user_name','id')->first();
         return [
             'name' => fake()->word(),
             'description' => fake()->sentence(),
-            'assigned_client' => $project[0],
-            'assigned_user' => $project[1],
+            'assigned_client' => $project->client_name,
+            'assigned_user' => $project->user_name,
             'deadline' => fake()->dateTimeThisMonth(),
-            'project_id' => $project[2],
+            'project_id' => $project->id,
             'status' => fake()->boolean()
         ];
     }

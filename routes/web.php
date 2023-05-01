@@ -43,11 +43,11 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/client/trashed', [ClientController::class, 'trashed']
     )->name('client.trashed');
 
-    Route::delete('project/{project}/delete', [ProjectController::class, 'delete']
+    Route::delete('/project/{project}/delete', [ProjectController::class, 'delete']
     )->name('project.delete');
-    Route::delete('project/{project}/trashed', [ProjectController::class, 'destroy']
+    Route::delete('/project/{project}/trashed', [ProjectController::class, 'destroy']
     )->name('project.destroy');
-    Route::get('project/{project}/edit', [ProjectController::class, 'edit']
+    Route::get('/project/{project}/edit', [ProjectController::class, 'edit']
     )->name('project.edit');
     Route::get('/project/create', [ProjectController::class, 'create']
     )->name('project.create');

@@ -29,6 +29,7 @@
                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-white" style="max-width: 250px; overflow:hidden;">
                             {{ $task->description }}
                         </td>
+
                         <td class="px-6 py-4">{{ $task->assigned_client }}</td>
                         <td class="px-6 py-4">{{ $task->assigned_user }}</td>
                         <td class="px-6 py-4">{{ $task->project_id }}</td>

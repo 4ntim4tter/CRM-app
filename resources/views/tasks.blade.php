@@ -30,10 +30,19 @@
         </x-slot>
 
     </x-dropdown>
+    <div>
+        <x-task-table :tasks=$tasks/>
+    </div>
 
-    {{-- <x-task-table :tasks=$tasks />
-    <div class="p-1">
-        {{ $tasks->links() }}
-    </div> --}}
+    <div class="py-2">
+        <div class="max-w-xl mx-24 my-12 sm:px-2 space-y-6">
+            <div class="p-4 sm:p-12 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-md">
+                    <x-task-form/>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 </x-app-layout>

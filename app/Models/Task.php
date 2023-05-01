@@ -31,23 +31,23 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    /**
-     * Get the user that owns the Task
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    // /**
+    //  * Get the user that owns the Task
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function user(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
-    /**
-     * Get the client that owns the Task
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function client(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    // /**
+    //  * Get the client that owns the Task
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function client(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }
