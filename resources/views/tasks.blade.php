@@ -10,7 +10,7 @@
             </div>
         @endif
     </div>
-    <x-dropdown align="bottom" width="48" contentClasses="py-1 dark:bg-slate-50" position="relative w-48">
+    <x-dropdown align="bottom" width="48" contentClasses="py-1 dark:bg-slate-50" position="absolute w-48">
         <x-slot name="trigger">
             <a href="#"
                 class="inline-flex items-center px-4 py-2 ml-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">Select
@@ -18,26 +18,30 @@
         </x-slot>
 
         <x-slot name="content">
-            {{-- {{ dd(auth()->user()->project) }} --}}
-            @forelse (auth()->user()->project as $project)
-                <x-dropdown-link
+            @forelse ($projects as $project)
+                <x-dropdown-link href="{{ route('tasks.project', $project->id) }}"
                     class="my-1 text-center uppercase tracking wideset dark:hover:bg-gray-500 dark:bg-slate-50 dark:text-gray-800 hover:text-slate-50 mr">
                     {{ $project->name }}
                 </x-dropdown-link>
             @empty
-                <p class="text-white">Empty</p>
+                <p
+                    class="my-1 text-center uppercase tracking wideset dark:hover:bg-gray-500 dark:bg-slate-50 dark:text-gray-800 hover:text-slate-50 mr">
+                    You have no projects.</p>
             @endforelse
         </x-slot>
 
     </x-dropdown>
-    <div>
-        <x-task-table :tasks=$tasks/>
-    </div>
-
-    <div class="py-2">
-        <div class="max-w-xl mx-24 my-12 sm:px-2 space-y-6">
-            <div class="p-4 sm:p-12 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-md">
+    <div class="flex-wrap inline-flex">
+        <div class="py-2">
+            <div class="ml-24 my-12 space-y-6">
+                <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                    <x-task-table :tasks=$tasks />
+                </div>
+            </div>
+        </div>
+        <div class="py-2">
+            <div class="mx-2 my-12 space-y-2">
+                <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                     <x-task-form/>
                 </div>
             </div>

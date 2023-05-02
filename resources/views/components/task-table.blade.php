@@ -1,10 +1,9 @@
 @aware(['tasks' => $tasks])
 
-<div class="shadow-md sm:rounded-xl">
-    <table class="w-full shadow-md sm:rounded-xl text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="w-0.5 text-sm text-left text-gray-500 dark:text-gray-400">
         <thead>
             <tr>
-                <th scope="col" class="shadow-md sm:rounded-xl px-6 py-3">ID</th>
+                <th scope="col" class="px-6 py-3">ID</th>
                 <th scope="col" class="px-6 py-3">Name</th>
                 <th scope="col" class="px-6 py-3">Description</th>
                 <th scope="col" class="px-6 py-3">Client</th>
@@ -50,4 +49,3 @@
             @endforeach
         </tbody>
     </table>
-</div>

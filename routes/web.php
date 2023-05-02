@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('projects');
     Route::get('/tasks', [DashboardController::class, 'tasks']
     )->name('tasks');
+
+    Route::get('/tasks/{project}', [TaskController::class, 'project_tasks']
+    )->name('tasks.project');
 
     Route::get('/client/{client}/edit', [ClientController::class, 'edit']
     )->name('client.edit');

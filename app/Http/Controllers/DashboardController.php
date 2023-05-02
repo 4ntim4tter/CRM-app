@@ -40,10 +40,11 @@ class DashboardController extends Controller
         return view('projects', compact('projects'));
     }
 
-    public function tasks(Request $request, Task $tasks)
+    public function tasks()
     {
-        $tasks = $tasks->latest()->paginate(10);
-        return view('tasks', compact('tasks'));
+        $projects = auth()->user()->project;
+        $tasks = [];
+        return view('tasks', compact('projects', 'tasks'));
     }
 
 }
