@@ -33,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::get('/tasks/{project}', [TaskController::class, 'project_tasks']
     )->name('tasks.project');
+    Route::post('/task/store', [TaskController::class, 'store']
+    )->name('tasks.store');
 
     Route::get('/client/{client}/edit', [ClientController::class, 'edit']
     )->name('client.edit');

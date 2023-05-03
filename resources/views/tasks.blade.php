@@ -42,7 +42,12 @@
         <div class="py-2">
             <div class="mx-2 my-12 space-y-2">
                 <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                    @isset($selected_project)
+                    <x-task-form :project=$selected_project />
+                    @endisset
+                    @empty($selected_project)
                     <x-task-form/>
+                    @endempty
                 </div>
             </div>
         </div>
