@@ -40,7 +40,16 @@ class TaskController extends Controller
             ]
         );
 
-        return redirect()->route('tasks')->with('status', 'Task stored.');
+        return redirect()->route('tasks.project', $request->project)->with('status', 'Task stored.');
+    }
+
+    public function edit($id)
+    {
+        $selected_task = Task::where('id', $id)->first();
+        $projects = auth()->user()->project;
+        $selected_project = Project::where('id', $selected_task->project_id)->first();
+        $tasks = $selected_project->tasks;
+        return view('tasks', compact('tasks', 'projects', 'selected_project', 'selected_task'));
     }
 }
 // "name" => "qweqwe"

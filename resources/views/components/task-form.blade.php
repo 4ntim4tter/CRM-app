@@ -5,7 +5,11 @@
     <div class="py-1 ml-1">
         <div class="py-1">
             <x-input-label for="name" :value="__('Task Name')" />
+            @if(Route::is('tasks.edit'))
+            <x-text-input id="name" name="name" type="text" value="{{ $task->name }}" class="mt-1 block w-full" required autofocus />
+            @else
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required autofocus />
+            @endif
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
         <div class="py-1">
