@@ -3,6 +3,9 @@
     @method('post')
 
     <div class="py-1 ml-1">
+            @if (Route::is('tasks.edit'))
+                <input type="id" name="id" type="text" value="{{ $task->id }}" hidden>
+            @endif
         <div class="py-1">
             <x-input-label for="name" :value="__('Task Name')" />
             @if (Route::is('tasks.edit'))
@@ -49,8 +52,8 @@
         <div class="py-1">
             <x-input-label for="deadline" :value="__('Deadline')" />
             @if (Route::is('tasks.edit'))
-                <x-text-input id="deadline" name="deadline" type="datetime-local"
-                    value="{{ $task->deadline }}" class="mt-1 block w-full" required autocomplete="deadline" />
+                <x-text-input id="deadline" name="deadline" type="datetime-local" value="{{ $task->deadline }}"
+                    class="mt-1 block w-full" required autocomplete="deadline" />
             @else
                 <x-text-input id="deadline" name="deadline" type="datetime-local" class="mt-1 block w-full" required
                     autocomplete="deadline" />
@@ -70,10 +73,10 @@
         <div class="py-1">
             <x-input-label for="status" class="inline-flex" :value="__('Status:')" />
             @if (Route::is('tasks.edit'))
-                <input id="status" name="status" type="checkbox" @if ($task->status == 1) checked @endif
-                    required />
+                <input id="status" name="status" type="checkbox"
+                    @if ($task->status == 1) checked @endif />
             @else
-                <input id="status" name="status" type="checkbox" required />
+                <input id="status" name="status" type="checkbox" />
             @endif
         </div>
         <div class="flex items-center gap-4 py-2">

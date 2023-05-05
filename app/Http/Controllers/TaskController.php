@@ -19,16 +19,19 @@ class TaskController extends Controller
 
     public function store(Request $request, Task $task, Logging $log)
     {
-        if ($task->where('name', '=', $request->name)->exists()){
+        if ($task->where('id', '=', $request->id)->exists()) {
             $log->create([
                 'name' => auth()->user()->name,
-                'log' => 'Task for projectID ' . $request->project . " named " . $request->name . ' updated.']);
+                'log' => 'Task for projectID ' . $request->project . " named " . $request->name . ' updated.'
+            ]);
         } else {
             $log->create([
                 'name' => auth()->user()->name,
-                'log' => 'Task for projectID ' . $request->project . " named " . $request->name . ' created.']);
+                'log' => 'Task for projectID ' . $request->project . " named " . $request->name . ' created.'
+            ]);
         }
         $task->updateOrCreate(
+            ['id' => $request->id,],
             [
                 'name' => $request->name,
                 'description' => $request->description,
