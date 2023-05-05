@@ -5,17 +5,24 @@
     <div class="py-1 ml-1">
         <div class="py-1">
             <x-input-label for="name" :value="__('Task Name')" />
-            @if(Route::is('tasks.edit'))
-            <x-text-input id="name" name="name" type="text" value="{{ $task->name }}" class="mt-1 block w-full" required autofocus />
+            @if (Route::is('tasks.edit'))
+                <x-text-input id="name" name="name" type="text" value="{{ $task->name }}"
+                    class="mt-1 block w-full" required autofocus />
             @else
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required autofocus />
+                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required
+                    autofocus />
             @endif
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
         <div class="py-1">
             <x-input-label for="description" :value="__('Description')" />
-            <textarea id="description" name="description" type="text"
-                class="mt-1 block w-full text-white rounded-md bg-gray-900 border-gray-700" required></textarea>
+            @if (Route::is('tasks.edit'))
+                <textarea id="description" name="description" type="text"
+                    class="mt-1 block w-full text-white rounded-md bg-gray-900 border-gray-700" required>{{ $task->description }}</textarea>
+            @else
+                <textarea id="description" name="description" type="text"
+                    class="mt-1 block w-full text-white rounded-md bg-gray-900 border-gray-700" required></textarea>
+            @endif
         </div>
         <div class="py-1">
             <x-input-label for="assigned_client" :value="__('Aassigned Client')" />
@@ -41,8 +48,13 @@
         </div>
         <div class="py-1">
             <x-input-label for="deadline" :value="__('Deadline')" />
-            <x-text-input id="deadline" name="deadline" type="datetime-local" class="mt-1 block w-full" required
-                autocomplete="deadline" />
+            @if (Route::is('tasks.edit'))
+                <x-text-input id="deadline" name="deadline" type="datetime-local"
+                    value="{{ $task->deadline }}" class="mt-1 block w-full" required autocomplete="deadline" />
+            @else
+                <x-text-input id="deadline" name="deadline" type="datetime-local" class="mt-1 block w-full" required
+                    autocomplete="deadline" />
+            @endif
         </div>
         <div class="py-1">
             <x-input-label for="project" :value="__('Project')" />
@@ -57,7 +69,12 @@
         </div>
         <div class="py-1">
             <x-input-label for="status" class="inline-flex" :value="__('Status:')" />
-            <input id="status" name="status" type="checkbox" class="" required/>
+            @if (Route::is('tasks.edit'))
+                <input id="status" name="status" type="checkbox" @if ($task->status == 1) checked @endif
+                    required />
+            @else
+                <input id="status" name="status" type="checkbox" required />
+            @endif
         </div>
         <div class="flex items-center gap-4 py-2">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
