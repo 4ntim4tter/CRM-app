@@ -19,9 +19,9 @@
                 class="shadow-md sm:rounded-xl bg-white border-b
                 @if ($task->id == request()->route()->id && Route::is('tasks.edit')) dark:bg-gray-600
                  @else dark:bg-gray-800 @endif dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <form action="" method='post'>
+                <form action="{{ route('task.delete', $task) }}" method='post'>
                     @csrf
-                    @method('post')
+                    @method('delete')
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $task->id }}</th>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

@@ -37,6 +37,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('tasks.edit');
     Route::post('/task/store', [TaskController::class, 'store']
     )->name('tasks.store');
+    Route::delete('/task/delete/{task}', [TaskController::class, 'delete']
+    )->name('task.delete');
+    Route::delete('/task/destroy/{task}', [TaskController::class, 'destroy']
+    )->name('task.destroy');
 
     Route::get('/client/{client}/edit', [ClientController::class, 'edit']
     )->name('client.edit');

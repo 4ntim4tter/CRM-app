@@ -37,7 +37,7 @@ class TaskController extends Controller
                 'description' => $request->description,
                 'assigned_client' => $request->assigned_client,
                 'assigned_user' => $request->assigned_user,
-                'deadline' => $request->deadline,
+                'deadline' => date('d-m-Y h:m', strtotime($request->deadline)),
                 'project_id' => $request->project,
                 'status' => ($request->status === "on") ? 1 : 0,
             ]
@@ -53,6 +53,19 @@ class TaskController extends Controller
         $selected_project = Project::where('id', $selected_task->project_id)->first();
         $tasks = $selected_project->tasks;
         return view('tasks', compact('tasks', 'projects', 'selected_project', 'selected_task'));
+    }
+
+    public function delete($task, Logging $log)
+    {
+        $task = Task::where('id', $task)->first();
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Task for named ' . $task->name . ', moved to trash.'
+        ]);
+        $selected_project = Project::where('id', $task->project_id)->first();
+        $task->delete();
+
+        return $this->project_tasks($selected_project->id);
     }
 }
 // "name" => "qweqwe"
