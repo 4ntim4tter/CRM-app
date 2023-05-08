@@ -31,7 +31,7 @@
         </x-slot>
 
     </x-dropdown>
-    <div class="flex-wrap inline-flex">
+    <div class="flex-wrap inline-flex justify-center">
         <div class="py-2">
             <div class="ml-24 my-12 space-y-6">
                 <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
