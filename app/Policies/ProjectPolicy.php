@@ -21,7 +21,7 @@ class ProjectPolicy
      */
     public function view(User $user): bool
     {
-        return $user->is_admin === 1;
+        return $user->is_admin;
     }
 
     /**

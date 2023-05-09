@@ -62,10 +62,41 @@ class TaskController extends Controller
             'name' => auth()->user()->name,
             'log' => 'Task for named ' . $task->name . ', moved to trash.'
         ]);
-        $selected_project = Project::where('id', $task->project_id)->first();
+        $selected_project = $task->project_id;
         $task->delete();
 
-        return $this->project_tasks($selected_project->id);
+        return redirect()->route('tasks.project', $selected_project)->with('status', 'Task moved to trash.');
+    }
+
+    public function destroy($id, Logging $log)
+    {
+        $task = Task::onlyTrashed()->where('id', $id)->first();
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Task ' . $task->name . ' deleted permanently.'
+        ]);
+        $project = $task->project_id;
+        $task->forceDelete();
+        return redirect()->route('tasks.trashed', $project)->with('status', 'Task deleted permanently.');
+    }
+
+    public function restore($id, Logging $log)
+    {
+        $task = Task::onlyTrashed()->where('id', $id)->first();
+        $log->create([
+            'name' => auth()->user()->name,
+            'log' => 'Task ' . $task->name . ' restored.'
+        ]);
+        $project = $task->project_id;
+        $task->restore();
+        return redirect()->route('tasks.trashed', $project)->with('status', 'Task Restored.');
+    }
+
+    public function trashed(Task $task)
+    {
+        $projects = auth()->user()->project;
+        $tasks = $task->onlyTrashed()->latest()->paginate(10);
+        return view('tasks', compact('tasks', 'projects'));
     }
 }
 // "name" => "qweqwe"
