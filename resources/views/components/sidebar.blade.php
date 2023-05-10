@@ -71,10 +71,10 @@
                     ">
                     <span class="flex-1 ml-3 whitespace-nowrap" style="font-size: 20px">Tasks</span>
                 </a>
-                @if ( Route::is('tasks.project') || Route::is('tasks.create') || Route::is('tasks.edit') || Route::is('tasks.trashed'))
+                @if (Route::is('tasks.project') || Route::is('tasks.create') || Route::is('tasks.edit') || Route::is('tasks.trashed'))
                     <div class="px-2 flex-1 ml-2">
                         @can('view', App\Models\Task::class)
-                            <a href="{{ route('tasks.trashed', request()->route()->project)}}"
+                            <a href="{{ route('tasks.trashed', request()->route()->project) }}"
                                 class="rounded-md flex items-center text-base font-normal dark:text-white px-2
                                         @if (Route::is('project.trashed')) dark:bg-gray-700 @endif"
                                 style="font-size: 12px; white-space: nowrap;">

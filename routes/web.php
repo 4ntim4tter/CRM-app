@@ -37,14 +37,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('tasks.edit');
     Route::post('/task/store', [TaskController::class, 'store']
     )->name('tasks.store');
-    Route::delete('/task/delete/{task}', [TaskController::class, 'delete']
-    )->name('tasks.delete');
-    Route::delete('/task/destroy/{task}', [TaskController::class, 'destroy']
-    )->name('tasks.destroy');
-    Route::get('/tasks/trashed/{project}', [TaskController::class, 'trashed']
-    )->name('tasks.trashed');
-    Route::get('/tasks/restore/{project}', [TaskController::class, 'restore']
-    )->name('tasks.restore');
+    Route::group(['middleware' => 'isAdmin'], function() {
+        Route::delete('/task/delete/{task}', [TaskController::class, 'delete']
+        )->name('tasks.delete');
+        Route::delete('/task/destroy/{task}', [TaskController::class, 'destroy']
+        )->name('tasks.destroy');
+        Route::get('/tasks/trashed/{project}', [TaskController::class, 'trashed']
+        )->name('tasks.trashed');
+        Route::get('/tasks/restore/{project}', [TaskController::class, 'restore']
+        )->name('tasks.restore');
+    });
 
     Route::get('/client/{client}/edit', [ClientController::class, 'edit']
     )->name('client.edit');
@@ -59,20 +61,22 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/client/trashed', [ClientController::class, 'trashed']
     )->name('client.trashed');
 
-    Route::delete('/project/{project}/delete', [ProjectController::class, 'delete']
-    )->name('project.delete');
-    Route::delete('/project/{project}/trashed', [ProjectController::class, 'destroy']
-    )->name('project.destroy');
-    Route::get('/project/trashed', [ProjectController::class, 'trashed']
-    )->name('project.trashed');
     Route::get('/project/{project}/edit', [ProjectController::class, 'edit']
     )->name('project.edit');
     Route::get('/project/create', [ProjectController::class, 'create']
     )->name('project.create');
-    Route::get('/project/{project}/restore', [ProjectController::class, 'restore']
-    )->name('project.restore');
     Route::post('/project/store', [ProjectController::class, 'store']
     )->name('project.store');
+    Route::group(['middleware' => 'isAdmin'], function(){
+        Route::delete('/project/{project}/delete', [ProjectController::class, 'delete']
+        )->name('project.delete');
+        Route::delete('/project/{project}/trashed', [ProjectController::class, 'destroy']
+        )->name('project.destroy');
+        Route::get('/project/trashed', [ProjectController::class, 'trashed']
+        )->name('project.trashed');
+        Route::get('/project/{project}/restore', [ProjectController::class, 'restore']
+        )->name('project.restore');
+    });
 });
 
 
