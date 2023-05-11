@@ -54,12 +54,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
     )->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store']
     )->name('client.store');
-    Route::delete('/client/{client}/delete', [ClientController::class, 'delete']
-    )->name('client.delete');
-    Route::delete('/client/{client}/destroy', [ClientController::class, 'destroy']
-    )->name('client.destroy');
-    Route::get('/client/trashed', [ClientController::class, 'trashed']
-    )->name('client.trashed');
+    Route::group(['middleware' => 'isAdmin'], function(){
+        Route::delete('/client/{client}/delete', [ClientController::class, 'delete']
+        )->name('client.delete');
+        Route::delete('/client/{client}/destroy', [ClientController::class, 'destroy']
+        )->name('client.destroy');
+        Route::get('/client/trashed', [ClientController::class, 'trashed']
+        )->name('client.trashed');
+    });
 
     Route::get('/project/{project}/edit', [ProjectController::class, 'edit']
     )->name('project.edit');
@@ -78,7 +80,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         )->name('project.restore');
     });
 });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
